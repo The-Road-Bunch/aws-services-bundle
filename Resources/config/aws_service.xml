@@ -32,8 +32,9 @@
 
         <service id="aws_factory" class="%aws_factory.class%"/>
 
-        <service id="aws_service" class="AwsService" factory-service="aws_factory" factory-method="get" abstract="true">
-            <argument type="service" id="aws"/>
+        <service id="aws_service" class="AqsService" abstract="true">
+            <factory service="aws_factory" method="get" />
+            <argument type="service" id="aws" />
         </service>
 
         <service id="aws_as" class="AmazonAS" parent="aws_service">
